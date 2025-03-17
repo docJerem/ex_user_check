@@ -1,11 +1,18 @@
 # ExUserCheck
 
-**TODO: Add description**
+🚀 **Elixir client for the UserCheck API** – Validate emails and domains effortlessly.
+
+## Features
+- 🔍 **Domain Validation**: Check if a domain is disposable, has MX records, or is flagged as spam.
+- ✉️ **Email Validation**: Validate emails, check their risk level, and detect disposable addresses.
+- ⚡ **Built with Req**: Simple and efficient HTTP requests.
+- 🏗 **Typed Structs**: Automatic deserialization with `ExConstructor`.
+
+---
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `ex_user_check` to your list of dependencies in `mix.exs`:
+Add `ex_user_check` to your `mix.exs` dependencies:
 
 ```elixir
 def deps do
@@ -13,9 +20,3 @@ def deps do
     {:ex_user_check, "~> 0.1.0"}
   ]
 end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/ex_user_check>.
-
