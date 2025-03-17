@@ -13,7 +13,7 @@ defmodule ExUserCheck.MixProject do
       package: package(),
       source_url: @source_url,
       start_permanent: Mix.env() == :prod,
-        version: @version
+      version: @version
     ]
   end
 

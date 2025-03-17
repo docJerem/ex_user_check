@@ -1,9 +1,9 @@
 defmodule ExUserCheck.Emails do
   @moduledoc "Check if an email address is valid and assess its risk factors"
-  import ExUserCheck.HttpHelpers, only: [req_options: 3]
+  import ExUserCheck.HttpHelpers
   alias ExUserCheck.Email
 
-  @path "/email"
+  @email_path "/email"
 
   @doc """
   Validates an email address and retrieves risk assessment details.
@@ -21,16 +21,5 @@ defmodule ExUserCheck.Emails do
       {:ok, %{"valid" => true, "disposable" => false, "spam" => false, ...}}
 
   """
-  def check(email) do
-    case Req.get!(options("/#{email}")) do
-      %Req.Response{status: 200, body: body} ->
-        Email.new(body)
-
-      error_resp ->
-        # TODO: render_error(error_resp)
-        error_resp
-    end
-  end
-
-  defp options(subpath, params \\ []), do: req_options(@path, subpath, params)
+  def check(email), do: get(@email_path, "/#{email}", &Email.new/1)
 end
