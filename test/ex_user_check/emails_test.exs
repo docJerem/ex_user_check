@@ -1,8 +1,8 @@
 defmodule ExUserCheck.EmailsTest do
   use ExUnit.Case, async: true
   import ExUserCheck.Test.Helpers.StubHelper
-  alias ExUserCheck.Emails
   alias ExUserCheck.Email
+  alias ExUserCheck.Emails
   alias ExUserCheck.Error
 
   @moduletag :emails

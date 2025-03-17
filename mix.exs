@@ -30,7 +30,6 @@ defmodule ExUserCheck.MixProject do
       {:mox, "~> 1.0", only: :test},
       {:plug, "~> 1.17"},
       {:req, "~> 0.5.8"}
-      # {:sobelow, "~> 0.13.0"}
     ]
   end
 

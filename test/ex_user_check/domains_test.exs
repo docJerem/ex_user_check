@@ -1,8 +1,8 @@
 defmodule ExUserCheck.DomainsTest do
   use ExUnit.Case, async: true
   import ExUserCheck.Test.Helpers.StubHelper
-  alias ExUserCheck.Domains
   alias ExUserCheck.Domain
+  alias ExUserCheck.Domains
   alias ExUserCheck.Error
 
   @moduletag :domains
