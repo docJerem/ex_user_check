@@ -2,7 +2,7 @@ defmodule ExUserCheck.MixProject do
   use Mix.Project
 
   @source_url "https://github.com/docJerem/ex_user_check"
-  @version "0.2.0"
+  @version "0.2.1"
 
   def project do
     [
