@@ -1,20 +1,19 @@
 defmodule ExUserCheck.MixProject do
   use Mix.Project
 
+  @source_url "https://github.com/docJerem/ex_user_check"
+  @version "0.1.0"
+
   def project do
     [
       app: :ex_user_check,
-      version: "0.1.0",
-      elixir: "~> 1.18",
+      deps: deps(),
+      description: description(),
+      elixir: "~> 1.16",
+      package: package(),
+      source_url: @source_url,
       start_permanent: Mix.env() == :prod,
-      deps: deps()
-    ]
-  end
-
-  # Run "mix help compile.app" to learn about applications.
-  def application do
-    [
-      extra_applications: [:logger]
+        version: @version
     ]
   end
 
@@ -32,6 +31,27 @@ defmodule ExUserCheck.MixProject do
       {:plug, "~> 1.17"},
       {:req, "~> 0.5.8"}
       # {:sobelow, "~> 0.13.0"}
+    ]
+  end
+
+  defp description do
+    """
+    UserCheck's public REST API help your to stop Disposable Emails from Creating Spam Accounts
+
+    Integrate an always up-to-date API to instantly detect temporary and disposable email addresses during user registration.
+    """
+  end
+
+  defp package do
+    [
+      maintainers: [
+        "Jeremie Flandrin"
+      ],
+      licenses: ["MIT"],
+      links: %{
+        "Website" => "https://www.usercheck.com",
+        "Github" => @source_url
+      }
     ]
   end
 end
