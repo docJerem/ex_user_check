@@ -6,8 +6,6 @@ defmodule ExUserCheck do
   @spec api_key() :: String.t()
   @doc "Return the API key from config.exs"
   def api_key do
-    Application.get_env(:ex_user_check, :api_key) |> IO.inspect(label: "ex_user_check")
-
     Application.get_env(:ex_user_check, :api_key) ||
       raise """
       Missing API key

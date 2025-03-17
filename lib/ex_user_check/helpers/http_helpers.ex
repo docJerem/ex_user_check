@@ -15,7 +15,8 @@ defmodule ExUserCheck.HttpHelpers do
     - `{:ok, deserialized_data}` on success (`200`).
     - `{:error, ExUserCheck.Error.t()}` on failure.
   """
-  @spec get(binary(), binary(), (map() -> any()), keyword()) :: {:ok, any()} | {:error, ExUserCheck.Error.t()}
+  @spec get(binary(), binary(), (map() -> any()), keyword()) ::
+          {:ok, any()} | {:error, ExUserCheck.Error.t()}
   def get(path, subpath, deserializer_fn, params \\ []) do
     options = req_options(path, subpath, params)
 
@@ -24,7 +25,7 @@ defmodule ExUserCheck.HttpHelpers do
         {:ok, deserializer_fn.(body)}
 
       {:ok, %Req.Response{status: status, body: %{"error" => error_msg}}} ->
-          {:error, %ExUserCheck.Error{status: status, error: error_msg}}
+        {:error, %ExUserCheck.Error{status: status, error: error_msg}}
 
       {:error, reason} ->
         {:error, Error.new(%{"status" => 500, "error" => inspect(reason)})}
