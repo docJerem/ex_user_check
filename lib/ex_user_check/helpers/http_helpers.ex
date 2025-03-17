@@ -2,7 +2,20 @@ defmodule ExUserCheck.HttpHelpers do
   @moduledoc "Collection of helpers for HTTP requests"
   alias ExUserCheck.Error
 
-  @doc "HTTP get with derserializaiton and error management"
+  @doc """
+  Performs an HTTP GET request with deserialization and error management.
+
+  ## Parameters
+    - `path` (*binary*): Base API path.
+    - `subpath` (*binary*): API subpath.
+    - `deserializer_fn` (*function*): Function to deserialize the response body.
+    - `params` (*keyword list*, optional): Query parameters.
+
+  ## Returns
+    - `{:ok, deserialized_data}` on success (`200`).
+    - `{:error, ExUserCheck.Error.t()}` on failure.
+  """
+  @spec get(binary(), binary(), (map() -> any()), keyword()) :: {:ok, any()} | {:error, ExUserCheck.Error.t()}
   def get(path, subpath, deserializer_fn, params \\ []) do
     options = req_options(path, subpath, params)
 
@@ -10,8 +23,11 @@ defmodule ExUserCheck.HttpHelpers do
       {:ok, %Req.Response{status: 200, body: body}} ->
         {:ok, deserializer_fn.(body)}
 
-      {_, error} ->
-        {:error, Error.new(error)}
+      {:ok, %Req.Response{status: status, body: %{"error" => error_msg}}} ->
+          {:error, %ExUserCheck.Error{status: status, error: error_msg}}
+
+      {:error, reason} ->
+        {:error, Error.new(%{"status" => 500, "error" => inspect(reason)})}
     end
   end
 
