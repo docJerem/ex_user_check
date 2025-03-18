@@ -2,7 +2,7 @@ defmodule ExUserCheck.MixProject do
   use Mix.Project
 
   @source_url "https://github.com/docJerem/ex_user_check"
-  @version "0.2.1"
+  @version "0.2.2"
 
   def project do
     [
@@ -20,10 +20,10 @@ defmodule ExUserCheck.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:credo, "~> 1.7"},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:doctor, "~> 0.21.0", only: :dev},
       {:exconstructor, "~> 1.2"},
-      {:excoveralls, "~> 0.18.1"},
+      {:excoveralls, "~> 0.18.1", only: [:test], runtime: false},
       {:ex_doc, "~> 0.33.0", only: :dev, runtime: false},
       {:mix_audit, "~> 2.1", only: [:dev, :test], runtime: false},
       {:mix_test_watch, "~> 1.2", only: [:test]},
