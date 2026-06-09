@@ -6,9 +6,3 @@ config :ex_user_check,
   ex_user_check_req_options: [
     plug: {Req.Test, ExUserCheck}
   ]
-
-config :mix_test_watch,
-  tasks: [
-    "test",
-    "format"
-  ]
