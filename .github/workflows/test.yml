@@ -38,8 +38,26 @@ jobs:
       - name: Compile project
         run: mix compile --warnings-as-errors
 
-      - name: Run audit
-        run: MIX_ENV=dev mix audit
+      - name: Check formatting
+        run: mix format --check-formatted
+
+      - name: Run Credo
+        run: mix credo -a --strict
 
       - name: Run tests
         run: mix test
+
+      - name: Run audit
+        run: MIX_ENV=dev mix audit
+
+      - name: Check for unused dependencies
+        run: mix deps.unlock --check-unused
+
+      - name: Check outdated dependencies
+        run: mix hex.outdated --within-requirements
+
+      - name: OSV-Scanner
+        uses: google/osv-scanner-action/osv-scanner-action@v2.3.5
+        with:
+          scan-args: |-
+            --lockfile=mix.lock
