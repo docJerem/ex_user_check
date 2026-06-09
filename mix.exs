@@ -6,6 +6,7 @@ defmodule ExUserCheck.MixProject do
 
   def project do
     [
+      aliases: aliases(),
       app: :ex_user_check,
       deps: deps(),
       description: description(),
@@ -17,11 +18,19 @@ defmodule ExUserCheck.MixProject do
     ]
   end
 
+  defp aliases do
+    [
+      audit: ["deps.audit", &run_hex_audit/1]
+    ]
+  end
+
+  defp run_hex_audit(_), do: Mix.shell().cmd("mix hex.audit")
+
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
-      {:doctor, "~> 0.21.0", only: :dev},
+      {:doctor, "~> 0.23.0", only: :dev},
       {:exconstructor, "~> 1.2"},
       {:excoveralls, "~> 0.18.1", only: [:test], runtime: false},
       {:ex_doc, "~> 0.33.0", only: :dev, runtime: false},
