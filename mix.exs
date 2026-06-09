@@ -38,7 +38,7 @@ defmodule ExUserCheck.MixProject do
       {:mix_test_watch, "~> 1.2", only: :dev, runtime: false},
       {:mox, "~> 1.0", only: :test},
       {:plug, "~> 1.17"},
-      {:req, "~> 0.5.8"}
+      {:req, "~> 0.6"}
     ]
   end
 
