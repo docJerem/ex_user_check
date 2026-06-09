@@ -16,7 +16,7 @@ Add `ex_user_check` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:ex_user_check, "~> 0.2.1"}
+    {:ex_user_check, "~> 0.2.3"}
   ]
 end
 ```
